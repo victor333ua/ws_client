@@ -1,13 +1,15 @@
 import { connectToServer } from "./connectToServer";
 
-const element = document.createElement('div');
-document.body.appendChild(element);
-
 (async () => {
+    const element = document.createElement('div');
+    document.body.appendChild(element);
+    element.innerHTML = `<span>connecting</span>`;
+    
     const ws = await connectToServer();
-    ws.onopen = (event) =>  element.innerHTML = `<h3>connected</>`; 
+    element.innerHTML = `<h3>connected</h3>` 
+
     ws.onmessage = (event) => {
-        element.innerHTML = `<h3>${event.data}</>`; 
+        element.innerHTML = `<h3>${event.data}</h3>`; 
     }
 })();
 
