@@ -1,4 +1,5 @@
 import { connectToServer } from "./connectToServer";
+import { generateMessages } from "./messages";
 
 (async () => {
     const element = document.createElement('div');
@@ -10,6 +11,11 @@ import { connectToServer } from "./connectToServer";
 
     ws.onmessage = (event) => {
         element.innerHTML = `<h3>${event.data}</h3>`; 
+    }
+
+    const gen = generateMessages();
+    for await (let mes of gen) {
+        ws.send(mes);
     }
 })();
 

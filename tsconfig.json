@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["es6", "DOM"],
+    "lib": ["es6", "DOM", "ESNext"],
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "module": "es6",
