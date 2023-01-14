@@ -1,13 +1,8 @@
 export async function* generateMessages() {
-    const messages = [
-        "let's start",
-        "mes 1",
-        "mes 2",
-        "mes 3",
-        "end"
-    ];
-    for (let mes of messages) {
-        await new Promise(resolve => setTimeout(resolve, 5000)); 
-        yield mes;   
+    const delays = [ 1000, 2000, 3000, 4000 ];
+    for (let [ind, delay] of delays.entries()) {
+        yield `next message for ${delay} ms`;   
+        await new Promise(resolve => setTimeout(resolve, delay)); 
     }
+    yield 'end loop';
 }
